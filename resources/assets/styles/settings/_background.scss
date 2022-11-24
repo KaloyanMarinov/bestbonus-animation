@@ -1,0 +1,16 @@
+//
+// Alignments
+// 
+$bg-prefix: 'bg';
+$bg-colors: map-merge((
+  'w': $white,
+  'b': $black,
+),
+$theme-colors);
+
+
+$bg-hover-colors: map-merge((
+  'w': darken($white, 10%),
+  'b': lighten($black, 10%)
+),
+$theme-hover-colors);

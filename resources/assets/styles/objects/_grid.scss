@@ -1,0 +1,24 @@
+//
+// Grid
+//
+.container {
+  @include make-container;
+  @include make-container-max-widths();
+
+    .container {
+      padding-left: 0;
+      padding-right: 0;
+    }
+}
+
+@include make-grid-system();
+
+.ng {
+  margin-right: 0;
+  margin-left: 0;
+
+    > [class*=#{$col-prefix}] {
+      padding-right: 0;
+      padding-left: 0;
+    }
+}

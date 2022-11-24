@@ -1,0 +1,40 @@
+@mixin fade-in($speed, $delay) {
+  opacity: 0;
+  animation: fade-in $speed $delay forwards;
+  animation-timing-function: ease-in-out;
+}
+
+@mixin slide-up($speed, $delay) {
+  opacity: 0;
+  transform: translateY(100%);
+  animation: slide-up $speed $delay forwards;
+  animation-timing-function: ease-in-out;
+}
+
+@mixin slide-right($speed, $delay) {
+  opacity: 0;
+  transform: translateX(-100%);
+  animation: slide-right $speed $delay forwards;
+  animation-timing-function: ease-in-out;
+}
+
+@mixin zoom-in($speed, $delay) {
+  opacity: 0;
+  transform: scale(0);
+  animation: zoom-in $speed $delay forwards;
+  animation-timing-function: ease-in-out;
+}
+
+@mixin spin-zoom-in($speed, $delay) {
+  opacity: 0;
+  transform: rotate(0) scale(0);
+  animation: spin-zoom-in $speed $delay forwards;
+  animation-timing-function: ease-in-out;
+}
+
+@mixin circle-icon($speed, $delay) {
+  transform: translateY(-160px);
+  animation: circle-icon $speed $delay forwards;
+  animation-timing-function: ease-in-out;
+}
+

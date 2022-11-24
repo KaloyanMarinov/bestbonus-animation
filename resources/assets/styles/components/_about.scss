@@ -1,0 +1,85 @@
+.am-about-header {
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 8;
+
+    &__box {
+      opacity: 0;
+      transform: scale(0);
+      background: $white;
+      box-shadow: $box-shadow;
+      animation:
+        zoom-in $speed delay($scene-6-delay, 74) forwards,
+        about-header-box-end $speed delay($scene-7-delay, 90) forwards;
+      animation-timing-function: ease-in-out;
+    }
+
+    &__logo {
+      // animation: about-logo-finish $speed * 2 delay($scene-7-delay, 90) forwards;
+      animation: fade-out $speed * 2 delay($scene-7-delay, 90) forwards;
+      animation-timing-function: ease-in-out;
+    }
+
+    &__title {
+      animation: fade-out $speed delay($scene-7-delay, 90) forwards;
+      animation-timing-function: ease-in-out;
+    }
+
+    &__thank-you {
+      @include fade-in($speed, delay($scene-7-delay, 105));
+      animation-timing-function: ease-in-out;
+    }
+}
+
+.screen-about {
+  z-index: 9;
+
+  .border {
+    animation: border-end $speed delay($scene-7-delay, 90) forwards;
+    animation-timing-function: ease-in-out;
+
+      &::before,
+      &::after {
+        animation: border $speed delay($scene-6-delay, 74) forwards;
+        animation-timing-function: ease-in-out;
+      }
+
+      &__title {
+        animation: zoom-in $speed delay($scene-6-delay, 75) forwards;
+        animation-timing-function: ease-in-out;
+      }
+
+      &__icon {
+        animation: fade-in $speed delay($scene-6-delay, 76) forwards;
+        animation-timing-function: ease-in-out;
+      }
+
+      &__value {
+        animation: slide-right $speed delay($scene-6-delay, 76) forwards;
+        animation-timing-function: ease-in-out;
+      }
+
+      &__item {
+        @for $i from 1 to 100 {
+          &:nth-child(#{$i}) {
+            animation: fade-in $speed delay($scene-6-delay, 78) + ($i * .05s) forwards;
+            animation-timing-function: ease-in-out;
+          }
+        }
+      }
+  }
+}
+
+@keyframes about-header-box-end {
+  to {
+    background: transparent;
+    box-shadow: none;
+  }
+}
+
+@keyframes about-logo-finish {
+  to {
+    transform: translate(100px, 403px) scale(3.5);
+  }
+}

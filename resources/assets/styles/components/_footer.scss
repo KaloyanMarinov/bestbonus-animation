@@ -1,0 +1,84 @@
+.am-footer {
+  right: 0;
+  bottom: 30px;
+  left: 0;
+
+    &__logo {
+      opacity: 0;
+      transform: scale(0);
+      animation:
+        footer-logo-start $speed delay($delay, 5) forwards,
+        footer-logo-end $speed delay($delay, 8) forwards,
+        fade-out $speed delay($scene-7-delay, 89)forwards;
+      animation-timing-function: ease-in-out;
+    }
+
+    &__slogan {
+      opacity: 0;
+      animation:
+        footer-slogan-start $speed delay($delay, 7) forwards,
+        footer-slogan-end $speed delay($delay, 8) forwards,
+        fade-out $speed delay($scene-7-delay, 89) forwards;
+      animation-timing-function: ease-in-out;
+    }
+}
+
+@keyframes footer-logo-start {
+    from {
+      opacity: 1;
+      transform: scale(0) translatey(-35%);
+    }
+    to {
+      opacity: 1;
+      transform: scale(3.5) translatey(-35%);
+    }
+}
+
+@keyframes footer-logo-end {
+  from {
+    opacity: 1;
+    transform: scale(3.5) translatey(-35%);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translatey(0);
+  }
+}
+
+
+@keyframes footer-slogan-start {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-20%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes footer-slogan-end {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes footer-slogan-finish {
+  from{
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+    font-size: 32px;
+    transform: translateY(-300px);
+  }
+}

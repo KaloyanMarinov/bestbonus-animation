@@ -1,0 +1,39 @@
+.screen-4 {
+  z-index: 5;
+
+    .border {
+      opacity: 1;
+      animation: border-end $speed delay($scene-4-delay, 53) forwards;
+      animation-timing-function: ease-in-out;
+
+        &::before,
+        &::after {
+          animation: border $speed delay($scene-3-delay, 45) forwards;
+          animation-timing-function: ease-in-out;
+        }
+
+        &__title {
+          animation: zoom-in $speed delay($scene-3-delay, 46) forwards;
+          animation-timing-function: ease-in-out;
+        }
+
+        &__icon {
+          animation: fade-in $speed delay($scene-3-delay, 47) forwards;
+          animation-timing-function: ease-in-out;
+        }
+
+        &__value {
+          animation: slide-right $speed delay($scene-3-delay, 48) forwards;
+          animation-timing-function: ease-in-out;
+        }
+
+        &__item {
+          @for $i from 1 to 100 {
+            &:nth-child(#{$i}) {
+              animation: fade-in $speed delay($scene-3-delay, 48) + ($i * .05s) forwards;
+              animation-timing-function: ease-in-out;
+            }
+          }
+        }
+    }
+}

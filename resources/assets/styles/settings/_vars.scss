@@ -1,0 +1,25 @@
+//
+// Global Variables
+//
+
+$gutter: 30px;
+
+$escaped-characters: (
+  ('<', '%3c'),
+  ('>', '%3e'),
+  ('#', '%23'),
+  ('(', '%28'),
+  (')', '%29'),
+);
+
+$speed: .3s;
+$delay: .5s;
+$time-out: 1s;
+$scene-1-delay: $delay + $time-out;
+$scene-2-delay: $scene-1-delay + $time-out;
+$scene-3-delay: $scene-2-delay + $time-out;
+$scene-4-delay: $scene-3-delay + 1.5s;
+$scene-5-delay: $scene-4-delay + 2s;
+$scene-6-delay: $scene-5-delay + $time-out;
+$scene-7-delay: $scene-6-delay + $time-out;
+$box-shadow: 0 12px 50px rgba(#070D3F, .18);

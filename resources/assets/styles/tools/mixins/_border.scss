@@ -1,0 +1,75 @@
+//
+// Borders
+//
+@use 'sass:list';
+
+@mixin make-border-radius($radius: $border-radius, $breakpoints: $grid-breakpoints) {
+  @each $key, $value in $radius {
+    .#{$border-radius-prefix}-#{$key} { border-radius: $value; }
+    .#{$border-radius-prefix}-t-#{$key} { @include border-top-radius($value); }
+    .#{$border-radius-prefix}-b-#{$key} { @include border-bottom-radius($value); }
+    .#{$border-radius-prefix}-l-#{$key} { @include border-left-radius($value); }
+    .#{$border-radius-prefix}-r-#{$key} { @include border-right-radius($value); }
+  }
+
+  @each $breakpoint in map-keys($breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $breakpoints);
+
+    @if(map-get($breakpoints, $breakpoint) > 0) {
+      @include media-breakpoint-up($breakpoint, $breakpoints) {
+        @each $key, $value in $radius {
+          $media: map-get($media-prefix, up);
+          .#{$border-radius-prefix}-#{$media}#{$infix}-#{$key} { border-radius: $value; }
+          .#{$border-radius-prefix}-t-#{$media}#{$infix}-#{$key} { @include border-top-radius($value); }
+          .#{$border-radius-prefix}-b-#{$media}#{$infix}-#{$key} { @include border-bottom-radius($value); }
+          .#{$border-radius-prefix}-l-#{$media}#{$infix}-#{$key} { @include border-left-radius($value); }
+          .#{$border-radius-prefix}-r-#{$media}#{$infix}-#{$key} { @include border-right-radius($value); }
+        }
+      }
+
+      @if(map-get($breakpoints, $breakpoint) != list.nth(list.nth($grid-breakpoints, -1), 2)) {
+        @include media-breakpoint-down($breakpoint, $breakpoints) {
+          @each $key, $value in $radius {
+            $media: map-get($media-prefix, down);
+            .#{$border-radius-prefix}-#{$media}#{$infix}-#{$key} { border-radius: $value; }
+            .#{$border-radius-prefix}-t-#{$media}#{$infix}-#{$key} { @include border-top-radius($value); }
+            .#{$border-radius-prefix}-b-#{$media}#{$infix}-#{$key} { @include border-bottom-radius($value); }
+            .#{$border-radius-prefix}-l-#{$media}#{$infix}-#{$key} { @include border-left-radius($value); }
+            .#{$border-radius-prefix}-r-#{$media}#{$infix}-#{$key} { @include border-right-radius($value); }
+          }
+        }
+      }
+    }
+
+    @include media-breakpoint-only($breakpoint, $breakpoints) {
+      @each $key, $value in $radius {
+        $media: map-get($media-prefix, only);
+        .#{$border-radius-prefix}-#{$media}#{$infix}-#{$key} { border-radius: $value; }
+        .#{$border-radius-prefix}-t-#{$media}#{$infix}-#{$key} { @include border-top-radius($value); }
+        .#{$border-radius-prefix}-b-#{$media}#{$infix}-#{$key} { @include border-bottom-radius($value); }
+        .#{$border-radius-prefix}-l-#{$media}#{$infix}-#{$key} { @include border-left-radius($value); }
+        .#{$border-radius-prefix}-r-#{$media}#{$infix}-#{$key} { @include border-right-radius($value); }
+      }
+    }
+  }
+}
+
+@mixin border-top-radius($radius) {
+  border-top-left-radius: $radius;
+  border-top-right-radius: $radius;
+}
+
+@mixin border-right-radius($radius) {
+  border-top-right-radius: $radius;
+  border-bottom-right-radius: $radius;
+}
+
+@mixin border-bottom-radius($radius) {
+  border-bottom-right-radius: $radius;
+  border-bottom-left-radius: $radius;
+}
+
+@mixin border-left-radius($radius) {
+  border-top-left-radius: $radius;
+  border-bottom-left-radius: $radius;
+}

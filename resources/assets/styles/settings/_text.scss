@@ -1,0 +1,72 @@
+//
+// Text
+//
+
+// Text Colors
+$text-color-prefix: 'tc';
+$text-colors: map-merge((
+  'w': $white,
+  'b': $black,
+  'in': inherit
+),
+$theme-colors);
+
+$text-hover-colors: map-merge((
+  'w': darken($white, 10%),
+  'b': $primary
+),
+$theme-hover-colors);
+
+// Text Align
+$text-align-prefix: 'ta';
+$text-aligns: (
+  'l': left,
+  'c': center,
+  'r': right,
+  'j': justify
+);
+
+// Text Transform
+$text-transform-prefix: 'tt';
+$text-transforms: (
+  'l': lowercase,
+  'u': uppercase,
+  'c': capitalize
+);
+
+// Text Decaration
+$text-decoration-prefix: 'td';
+$text-decorations: (
+  'n': none,
+  'u': underline,
+);
+
+// Font Styles
+$font-size-prefix: 'fs';
+$font-sizes: (
+  '0': 0,
+  '14': 14px,
+  '16': 16px,
+  '20': 20px,
+  '24': 24px,
+  '28': 28px,
+  '30': 30px,
+  '32': 32px,
+  '48': 48px,
+  '64': 64px,
+);
+
+
+// Font Weights
+$font-weight-prefix: 'fw';
+$font-weights: (
+  'n': $font-weight-normal,
+  'sb': $font-weight-semibold,
+  'b': $font-weight-bold,
+);
+
+// Font Styles
+$font-style-prefix: 'fst';
+$font-styles: (
+  'i': italic
+);

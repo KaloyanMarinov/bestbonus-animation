@@ -1,0 +1,65 @@
+.border {
+  border-radius: 10px;
+
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-radius: 10px;
+        border: 0 solid transparent;
+        background-color: transparent;
+    }
+
+    &::before {
+        top: 0;
+        left: 0;
+        border-top-color: $secondary;
+        border-left-color: $secondary;
+    }
+
+    &::after {
+        right: 0;
+        bottom: 0;
+        border-bottom-color: $secondary;
+        border-right-color: $secondary;
+    }
+
+    &__icon,
+    &__item {
+      opacity: 0;
+    }
+
+    &__check {
+      background: escape-svg('<svg width="11" height="9" viewBox="0 0 11 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.5112 0.991307C10.9017 1.38183 10.9017 2.01499 10.5112 2.40552L4.45837 8.45841C4.27084 8.64595 4.01648 8.75131 3.75126 8.75131C3.48604 8.75131 3.23168 8.64595 3.04415 8.45841L0.292887 5.7071C-0.0976339 5.31657 -0.0976282 4.68341 0.2929 4.29289C0.683427 3.90237 1.31659 3.90237 1.70711 4.2929L3.75126 6.33708L9.09694 0.991319C9.48746 0.600791 10.1206 0.600786 10.5112 0.991307Z" fill="#0D0C52"/></svg>') left center no-repeat;
+    }
+
+    &__title {
+      top: -23px;
+      opacity: 0;
+      transform: scale(0);
+    }
+
+    &__value {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+}
+
+@keyframes border {
+  from {
+    border-width: 1px;
+  }
+  to {
+    border-width: 1px;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@keyframes border-end {
+  to {
+    transform: scale(0);
+  }
+}

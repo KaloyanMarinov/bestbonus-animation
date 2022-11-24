@@ -1,0 +1,46 @@
+body {
+  position: relative;
+  height: 1024px;
+}
+
+.main-scene {
+  top: 300px;
+  left: 0;
+  right: 0;
+  bottom: 140px;
+}
+
+.circle {
+  position: relative;
+  margin-left: 1px;
+  margin-top: 2px;
+  width: 180px;
+  height: 180px;
+  border: 2px solid $white;
+  z-index: 1;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+      background-color: inherit;
+      border-radius: inherit;
+      border: inherit;
+      transform: translate(-1px, -2px);
+    }
+
+    &__icon {
+      width: 150px;
+      height: 150px;
+      border-radius: inherit;
+      border: inherit;
+      margin-left: -1px;
+      margin-top: -2px;
+      background-color: $secondary;
+    }
+}
+

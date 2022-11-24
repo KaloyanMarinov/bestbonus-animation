@@ -1,0 +1,42 @@
+.scene-1 {
+  top: 645px;
+  left: 0;
+  right: 0;
+  bottom: 140px;
+  z-index: 2;
+  animation: sceen-1-end $speed delay($scene-1-delay, 14) forwards;
+  animation-timing-function: ease-in-out;
+
+    .circle {
+      top: 0;
+      left: calc(50% - 90px);
+      bottom: 0;
+      opacity: 0;
+      transform: scale(0);
+      animation:
+        zoom-in $speed delay($delay, 10) forwards,
+        circle-move-left $speed delay($delay, 12) forwards;
+      animation-timing-function: ease-in-out;
+
+        svg {
+          @include circle-icon($speed, delay($delay, 11));
+        }
+    }
+
+    &__bonus {
+      @include slide-right($speed, delay($delay, 13));
+    }
+}
+
+@keyframes circle-move-left {
+    to {
+      left: -50px;
+      transform: scale(.4);
+    }
+}
+
+@keyframes sceen-1-end {
+  to {
+    opacity: 0;
+  }
+}

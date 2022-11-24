@@ -1,0 +1,11 @@
+.foc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+    img {
+      flex: 0 0 auto;
+      width: auto;
+      max-height: 100%;
+    }
+}

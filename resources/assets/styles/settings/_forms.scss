@@ -1,0 +1,27 @@
+//
+// Forms
+//
+$input-prefix: 'field';
+$input-height: 50px;
+$input-padding-y: 14px;
+$input-padding-x: 15px;
+$input-font-family: inherit;
+$input-font-size: 18px;
+$input-font-weight: null;
+$input-line-height: 1.25;
+
+$input-color: $body-color;
+$input-border-width: 1px;
+$inpit-border-style: solid;
+$input-border-color: $primary; //rgba(#232222, .1);
+$input-box-shadow: null;
+$input-border-raidus: 6px;
+$input-bg: $white;
+$input-disabled-bg: theme-color('light');
+
+$input-transition: null;
+
+$input-placeholder-color: $primary;
+
+$select-arrow: url('#{$images-icons}select-arrow.svg');
+$select-arrow-space: 13px;

@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "outDir": "resources/assets/styles/dist",
+    "noImplicitAny": false,
+    "module": "commonjs",
+    "target": "ES2015",
+    "lib": ["ES2015", "es2019", "dom", "ES6" ],
+    "sourceMap": true,
+    "declaration": false,
+    "esModuleInterop": true,
+    "downlevelIteration": true,
+    "isolatedModules": false,
+  },
+  "exclude": [
+    "*.js",
+    "node_modules",   
+    "dist",  
+    "typings"
+  ]
+}

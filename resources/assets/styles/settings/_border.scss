@@ -1,0 +1,16 @@
+//
+// Border
+//
+$border-radius-prefix: 'br';
+$border-radius: (
+  '0': 0,
+  '4': 4px,
+  '6': 6px,
+  '8': 8px,
+  '10': 10px,
+  '12': 12px,
+  '15': 15px,
+  '20': 20px,
+  'c': 50%,
+  'p': 50rem
+);

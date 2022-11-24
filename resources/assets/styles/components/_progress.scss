@@ -1,0 +1,240 @@
+$circle-delay: (
+  2: delay($scene-3-delay, 44),
+  3: delay($scene-4-delay, 55),
+  4: delay($scene-5-delay, 64),
+);
+
+$circle-icon-delay: (
+  2: delay($scene-3-delay, 44),
+  3: delay($scene-4-delay, 55),
+  4: delay($scene-5-delay, 64),
+);
+
+.progress {
+  width: $container-width;
+  height: 410px;
+  animation:
+    progress $speed delay($scene-2-delay, 31) forwards,
+    progress-end $speed delay($scene-6-delay, 73) forwards;
+  animation-timing-function: ease-in-out;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 5px;
+      left: 30px;
+      height: 0;
+      width: 20px;
+    }
+
+    &::after {
+      z-index: 2;
+      background-color: $secondary;
+    }
+
+    &::before {
+      background-color: #E5E2F8;
+      animation: progress-before $speed delay($scene-2-delay, 32) forwards;
+      animation-timing-function: ease-in-out;
+    }
+
+    &::after {
+      animation:
+        progress-after-step-2 $speed delay($scene-3-delay, 43) forwards,
+        progress-after-step-3 $speed delay($scene-4-delay, 54) forwards,
+        progress-after-step-4 $speed delay($scene-5-delay, 63) forwards;
+      animation-timing-function: ease-in-out;
+    }
+
+    .circle {
+      margin-bottom: -120px;
+      opacity: 0;
+      z-index: 3;
+      transform: scale(0);
+
+        &--1 {
+          animation:
+            zoom-in $speed delay($scene-1-delay, 15) forwards,
+            progress-circle-move-1 $speed delay($scene-2-delay, 31) forwards;
+            animation-timing-function: ease-in-out;
+
+              svg {
+                @include circle-icon($speed, delay($scene-1-delay, 16));
+              }
+        }
+
+        @for $i from 2 to 5 {
+
+            &--#{$i} {
+              animation:
+                zoom-in $speed delay($scene-1-delay, (15 + (4 * ($i - 1)))) forwards,
+                progress-circle-move-#{$i} $speed delay($scene-2-delay, 31) forwards,
+                proggress-circle-active $speed map-get($circle-delay, $i) forwards;
+              animation-timing-function: ease-in-out;
+
+
+                svg {
+                  @include circle-icon($speed, delay($scene-1-delay, (16 + (4 * ($i - 1)))));
+                }
+
+                .circle__icon {
+                  animation:
+                    proggress-circle-icon $speed delay($scene-2-delay, 31) forwards,
+                    proggress-circle-icon-active $speed map-get($circle-icon-delay, $i) forwards;
+                  animation-timing-function: ease-in-out;
+                }
+            }
+        }
+    }
+
+    &__box {
+      opacity: 0;
+      box-shadow: $box-shadow;
+
+        &--1 {
+          animation:
+            fade-in $speed delay($scene-1-delay, 17) forwards,
+            progress-box-end $speed delay($scene-2-delay, 31) forwards;
+          animation-timing-function: ease-in-out;
+        }
+
+        @for $i from 2 to 5 {
+
+            &--#{$i} {
+              animation: fade-in $speed delay($scene-1-delay, (17 + (4 * ($i - 1)))) forwards,
+              progress-box-end $speed delay($scene-2-delay, 31) forwards;
+              animation-timing-function: ease-in-out;
+            }
+        }
+    }
+
+    &__name {
+      opacity: 0;
+      transform: translateY(100%);
+
+          &--1 {
+            animation:
+              slide-up $speed delay($scene-1-delay, 18) forwards,
+              progress-name-move-1 $speed delay($scene-2-delay, 31) forwards;
+            animation-timing-function: ease-in-out;
+          }
+
+          @for $i from 2 to 5 {
+
+              &--#{$i} {
+                animation:
+                  slide-up $speed delay($scene-1-delay, (18 + (4 * ($i - 1)))) forwards,
+                  progress-name-move-#{$i} $speed delay($scene-2-delay, 31) forwards,
+                  progress-name-active $speed $speed + map-get($circle-delay, $i) forwards;
+                animation-timing-function: ease-in-out;
+              }
+          }
+    }
+}
+
+@keyframes progress {
+  to {
+    width: 200px;
+  }
+}
+
+@keyframes progress-end {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes progress-before {
+  to {
+    height: 400px;
+  }
+}
+
+@keyframes progress-box-end {
+  to {
+    background-color: transparent;
+    box-shadow: none;
+  }
+}
+
+@keyframes progress-circle-move-1 {
+  to {
+    text-align: left;
+    transform: translate(-50px, -55px) scale(.4);
+  }
+}
+
+@keyframes progress-name-move-1 {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    width: 160px;
+    height: 50px;
+    font-size: 18px;
+    transform: translate(85px, -185px);
+  }
+}
+
+@for $i from 2 to 5 {
+
+  @keyframes progress-circle-move-#{$i} {
+    to {
+      transform: translate((($i - 1) * -53px) - (($i - 2) * 9) - 60px, ($i - 1) * 115px - 55px) scale(.4);
+      background-color: transparent;
+      border-color: transparent;
+    }
+  }
+
+  @keyframes progress-circle-step-#{$i} {
+    to {
+      background-color: $secondary;
+      border-color: $white;
+    }
+  }
+
+  @keyframes progress-name-move-#{$i} {
+    from,
+    to {
+      opacity: 0;
+      height: 50px;
+      text-align: left;
+      width: 160px;
+      font-size: 18px;
+      transform: translate(($i - 1) * 25px - ($i - 2) * 88px, ($i - 1) * -70px + ($i - 2) * 185px);
+    }
+  }
+
+  @keyframes progress-after-step-#{$i}{
+    to {
+      height: ($i - 1) *   118px;
+    }
+  }
+}
+
+@keyframes proggress-circle-icon {
+  to {
+    background-color: #B6B1EC;
+  }
+}
+
+@keyframes proggress-circle-active {
+  to {
+    background-color: $secondary;
+    border-color: $white;
+  }
+}
+
+@keyframes proggress-circle-icon-active {
+  to {
+    background-color: $secondary;
+  }
+}
+
+@keyframes progress-name-active {
+  to {
+    opacity: 1;
+  }
+}
